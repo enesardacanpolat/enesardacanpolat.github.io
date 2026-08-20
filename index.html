@@ -561,6 +561,7 @@ footer{border-top:1px solid var(--line);padding:30px 0}
         <div class="ctas">
           <a class="btn" href="#work" data-en="See the work" data-tr="Projelere bak"></a>
           <a class="btn ghost" href="EAC_CV.pdf" download="Enes_Arda_Canpolat_CV.pdf" data-en="Download CV ↓" data-tr="CV'yi indir ↓"></a>
+          <a class="btn ghost" href="EAC_CV_Data.pdf" download="Enes_Arda_Canpolat_CV_Data_Analysis.pdf" data-en="CV · Data Analysis ↓" data-tr="CV · Data Analysis ↓"></a>
           <button class="btn ghost" id="sqlCta" data-en="Run a query ↗" data-tr="Sorgu çalıştır ↗"></button>
         </div>
         <div class="stats" id="stats"></div>
@@ -1359,14 +1360,15 @@ function renderTimeline(){
 function renderSocials(){
   const P = DB.profile;
   const items = [
-    {l:{en:"Résumé",tr:"CV"}, h:{en:"Download PDF",tr:"PDF indir"}, u:"EAC_CV.pdf", a:"↓", dl:true},
+    {l:{en:"Résumé",tr:"CV"}, h:{en:"Backend & databases · PDF",tr:"Backend & veritabanı · PDF"}, u:"EAC_CV.pdf", a:"↓", dl:"Enes_Arda_Canpolat_CV.pdf"},
+    {l:{en:"Résumé · Data",tr:"CV · Data"}, h:{en:"Data analysis version · PDF",tr:"Data analysis sürümü · PDF"}, u:"EAC_CV_Data.pdf", a:"↓", dl:"Enes_Arda_Canpolat_CV_Data_Analysis.pdf"},
     {l:"GitHub",   h:"@enesardacanpolat · 24 repos",  u:P.github,   a:"↗"},
     {l:"LinkedIn", h:"/enes-arda-canpolat",   u:P.linkedin, a:"↗"},
     {l:{en:"Phone · TR",tr:"Telefon · TR"}, h:P.phoneTR, u:"tel:"+P.phoneTR.replace(/\s/g,""), a:"↗"},
     {l:{en:"Phone · PL",tr:"Telefon · PL"}, h:P.phonePL, u:"tel:"+P.phonePL.replace(/\s/g,""), a:"↗"}
   ];
   document.getElementById("socials").innerHTML = items.map(i=>
-    '<a class="sc" href="'+i.u+'"'+(i.dl?' download="Enes_Arda_Canpolat_CV.pdf"':' target="_blank" rel="noopener"')+
+    '<a class="sc" href="'+i.u+'"'+(i.dl?' download="'+i.dl+'"':' target="_blank" rel="noopener"')+
     '><span class="l">'+esc(t(i.l))+'</span><span class="h">'+esc(t(i.h))+
     '</span><span class="ar">'+i.a+"</span></a>").join("");
 }
